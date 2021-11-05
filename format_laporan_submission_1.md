@@ -44,10 +44,10 @@ Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan d
 
 Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
 
-    ### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
-    - accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
-    - - cuisine : merupakan jenis masakan yang disajikan pada restoran.
-    - - dst
+### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
+- accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
+- cuisine : merupakan jenis masakan yang disajikan pada restoran.
+- dst
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
 - Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
