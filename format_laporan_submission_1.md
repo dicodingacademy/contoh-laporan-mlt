@@ -1,87 +1,81 @@
-# Laporan Proyek Machine Learning - Nama Anda
+# Laporan Proyek Machine Learning - Julio Aldrin Purba 
 
 ## Domain Proyek
 
-Pada bagian ini, kamu perlu menuliskan latar belakang yang relevan dengan proyek yang diangkat.
+Prediksi cuaca merupakan salah satu tantangan penting dalam dunia meteorologi yang berpengaruh pada berbagai sektor kehidupan, seperti pertanian, transportasi, dan penanggulangan bencana. Informasi cuaca yang akurat dan tepat waktu sangat membantu dalam pengambilan keputusan yang lebih baik dan pengurangan risiko bencana.
+
+Proyek ini berfokus pada pembuatan model machine learning untuk memprediksi cuaca berdasarkan berbagai fitur meteorologis, seperti suhu, kelembaban, tekanan, dan lain-lain.
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
-- Jelaskan mengapa dan bagaimana masalah tersebut harus diselesaikan
-- Menyertakan hasil riset terkait atau referensi. Referensi yang diberikan harus berasal dari sumber yang kredibel dan author yang jelas.
+- Prakiraan cuaca manual sering kali kurang akurat dan memerlukan sumber daya besar.
+- Prediksi otomatis dapat membantu sektor industri dan masyarakat dalam merencanakan aktivitas harian.
+- Dampak cuaca ekstrem seperti banjir dan kekeringan dapat diminimalisir jika dapat diprediksi secara dini.
   
-  Format Referensi: [Judul Referensi](https://scholar.google.com/) 
+  Format Referensi: Weather Forecasting Using Machine Learning Algorithms ([https://scholar.google.com/](https://scholar.google.com/scholar?q=Weather+Forecasting+Using+Machine+Learning+Algorithms) 
 
 ## Business Understanding
-
-Pada bagian ini, kamu perlu menjelaskan proses klarifikasi masalah.
-
-Bagian laporan ini mencakup:
-
 ### Problem Statements
-
 Menjelaskan pernyataan masalah latar belakang:
-- Pernyataan Masalah 1
-- Pernyataan Masalah 2
-- Pernyataan Masalah n
+- Bagaimana cara memprediksi cuaca berdasarkan data historis meteorologi?
+- Algoritma machine learning apa yang paling efektif dalam melakukan prediksi tersebut?
 
 ### Goals
-
 Menjelaskan tujuan dari pernyataan masalah:
-- Jawaban pernyataan masalah 1
-- Jawaban pernyataan masalah 2
-- Jawaban pernyataan masalah n
-
-Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Menambahkan bagian “Solution Statement” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
+- Membuat sistem prediksi cuaca menggunakan data historis.
+- Meningkatkan akurasi prediksi menggunakan beberapa model machine learning seperti Random Forest, KNN, dan SVM.
 
     ### Solution statements
-    - Mengajukan 2 atau lebih solution statement. Misalnya, menggunakan dua atau lebih algoritma untuk mencapai solusi yang diinginkan atau melakukan improvement pada baseline model dengan hyperparameter tuning.
-    - Solusi yang diberikan harus dapat terukur dengan metrik evaluasi.
+    - Menerapkan algoritma klasifikasi seperti:
+      - Random Forest: model ensemble untuk menghindari overfitting.
+      - K-Nearest Neighbors (KNN): model berbasis kemiripan data untuk prediksi.
+      - Support Vector Machine (SVM): untuk memaksimalkan margin antar kelas
+      - LSTM (Long Short-Term Memory) : untuk memprediksi curah hujan.
+    - Membandingkan performa setiap model menggunakan MAE,RAE,MSE,R2
 
 ## Data Understanding
-Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan dalam proyek. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
 
-Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
+Dataset yang digunakan merupakan data cuaca yang memiliki fitur-fitur sebagai berikut:
+- MinTemp: Suhu minimum harian
+- MaxTemp: Suhu maksimum harian
+- Rainfall: Curah hujan
+- WindGustSpeed: Kecepatan angin kencang
+- Humidity3pm: Kelembaban pada pukul 3 sore
+- Pressure9am, Pressure3pm: Tekanan udara pada pukul 9 pagi dan 3 sore
+- Temp3pm: Suhu pada pukul 3 sore
+- RainTomorrow: Label target (apakah akan hujan besok atau tidak)
 
-### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
-- accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
-- cuisine : merupakan jenis masakan yang disajikan pada restoran.
-- dst
-
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
+Dataset ini dibersihkan dan diambil subset-nya sebanyak 30.000 baris dari total 142.000 baris untuk efisiensi proses pelatihan model. Contoh: [Prediksi_Cuaca](https://www.kaggle.com/datasets/ratnasarii/prediksi-cuaca).
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+Langkah-langkah data preparation yang dilakukan:
+- Handling Missing Values: Menghapus data dengan nilai kosong.
+- Encoding: Mengubah data kategorikal menjadi numerik (misalnya, RainTomorrow diubah ke 0 dan 1).
+- Feature Selection: Memilih fitur-fitur relevan untuk model.
+- Feature Scaling: Normalisasi menggunakan StandardScaler untuk KNN dan SVM agar performa optimal.
+Alasan dilakukan preparation ini adalah agar data siap digunakan untuk model ML yang sensitif terhadap skala dan tidak dapat menangani data kosong.
 
 ## Modeling
-Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
+Model yang digunakan:
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
-- Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
-- Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. **Jelaskan mengapa memilih model tersebut sebagai model terbaik**.
+- Random Forest Classifier
+- K-Nearest Neighbors (KNN)
+- Support Vector Machine (SVM)
+- LSTM (Long Short-Term Memory)
+Setiap model dilatih menggunakan data train-test split (80:20), dan dilakukan evaluasi setelahnya.
+
+Kelebihan dan Kekurangan:
+
+Random Forest: Akurat, tahan terhadap overfitting, namun lebih lambat.
+KNN: Sederhana namun sensitif terhadap skala dan outlier.
+SVM: Baik untuk data dengan margin jelas, namun kurang efisien untuk dataset besar.
+LTSM: Mampu Menangani Data Berurutan / Time Series, Butuh Banyak Data dan Waktu Latih.
 
 ## Evaluation
-Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
+Hasil evaluasi:
+Model	Akurasi	Precision	Recall	F1 Score
+Random Forest	0.85	0.89	0.82	0.85
+KNN	0.77	0.81	0.74	0.77
+SVM	0.78	0.83	0.75	0.78
+Model terbaik yang dipilih adalah Random Forest karena memberikan skor terbaik di semua metrik.
 
-Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
-- Penjelasan mengenai metrik yang digunakan
-- Menjelaskan hasil proyek berdasarkan metrik evaluasi
-
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
-
-**---Ini adalah bagian akhir laporan---**
-
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
 
